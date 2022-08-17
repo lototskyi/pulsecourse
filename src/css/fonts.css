@@ -5,7 +5,7 @@
 		url('../fonts/MuseoSansCyrl-500.eot?#iefix') format('embedded-opentype'),
 		url('../fonts/MuseoSansCyrl-500.woff') format('woff'),
 		url('../fonts/MuseoSansCyrl-500.ttf') format('truetype');
-	font-weight: normal;
+	font-weight: 500;
 	font-style: normal;
 }
 
@@ -16,7 +16,7 @@
 		url('../fonts/MuseoSansCyrl-700.eot?#iefix') format('embedded-opentype'),
 		url('../fonts/MuseoSansCyrl-700.woff') format('woff'),
 		url('../fonts/MuseoSansCyrl-700.ttf') format('truetype');
-	font-weight: normal;
+	font-weight: 700;
 	font-style: normal;
 }
 
