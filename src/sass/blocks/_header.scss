@@ -34,3 +34,18 @@
         align-items: flex-end;
     }
 }
+
+@media(max-width: 768px) {
+    .header {
+        flex-direction: column;
+        &__logo, &__official {
+            margin-bottom: 10px;
+        }
+        &__official {
+            font-size: 16px;
+        }
+        &__phone {
+            margin-bottom: 20px;
+        }
+    }
+}

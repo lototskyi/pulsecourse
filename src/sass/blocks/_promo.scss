@@ -50,3 +50,49 @@
         }
     }
 }
+
+@media(max-width: 1024px) {
+    .promo {
+        padding-right: 20px;
+        padding-left: 20px;
+        min-height: 400px;
+        background: url('../img/main.jpg') 20% (center/cover) no-repeat;
+        &__wrapper {
+            margin-top: 40px;
+            align-items: center;
+        }
+        &__header {
+            font-size: 30px;
+        }
+    }
+}
+@media(max-width: 768px) {
+    .promo {
+        &__header {
+            font-size: 20px;
+        }
+        &__subheader {
+            font-size: 16px;
+        }
+        &__icons {
+            margin-top: 30px;
+        }
+    }
+}
+@media(max-width: 465px) {
+    .promo {
+        &__icons {
+            width: 100%;
+        }
+    }
+}
+@media(max-width: 375px) {
+    .promo {
+        &__subheader {
+            font-size: 13px;
+        }
+        &__icons {
+            width: 100%;
+        }
+    }
+}
