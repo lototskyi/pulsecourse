@@ -30,3 +30,14 @@
 	font-weight: 300;
 	font-style: normal;
 }
+
+@font-face {
+	font-family: 'MuseoModerno';
+	src: url('../fonts/MuseoModerno-Light.eot');
+	src: url('../fonts/MuseoModerno-Light.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/MuseoModerno-Light.woff2') format('woff2'),
+		 url('../fonts/MuseoModerno-Light.woff') format('woff'),
+		 url('../fonts/MuseoModerno-Light.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 300;
+}
