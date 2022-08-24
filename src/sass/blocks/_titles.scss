@@ -1,0 +1,15 @@
+.title {
+    max-width: fit-content;
+    display: block;
+    margin: 0 auto;
+    font-weight: 700;
+    font-size: 30px;
+    color: $text-color1;
+    text-transform: uppercase;
+    &_left {
+        font-size: 36px;
+        text-align: left;
+        margin: 0;
+        color: #FFF;
+    }
+}

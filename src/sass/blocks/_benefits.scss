@@ -2,15 +2,6 @@
     max-height: 470px;
     padding: 71px 0 64px 0;
     background-color: #f6f6f6;
-    &__header {
-        max-width: fit-content;
-        display: block;
-        margin: 0 auto;
-        font-weight: 700;
-        font-size: 30px;
-        color: $text-color1;
-        text-transform: uppercase;
-    }
     &__icons {
         display: flex;
         margin-top: 60px;
