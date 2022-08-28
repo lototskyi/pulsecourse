@@ -22,3 +22,15 @@
         left: auto;
     }
 }
+
+@media(max-width: 768px) {
+    .carousel {
+        padding: 20px 0;
+        &__inner {
+            width: 100%;
+        }
+        img {
+            width: 100%;
+        }
+    }
+}
