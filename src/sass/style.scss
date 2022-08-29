@@ -6,6 +6,9 @@
     max-width: 950px;
     margin: 0 auto;
 }
+.museo-moderno {
+    font-family: MuseoModerno;
+}
 
 @import 'blocks/promo';
 @import 'blocks/header';
@@ -16,3 +19,4 @@
 @import 'blocks/forms';
 @import 'blocks/carousel';
 @import 'blocks/catalog';
+@import 'blocks/reviews';
