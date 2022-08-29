@@ -23,3 +23,11 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: "/sass/"
+      - name: Clear Cloudflare cache
+        uses: Cyb3r-Jak3/action-cloudflare-cache@v1.1.0
+        with:
+          # Zone is required by both methods
+          zone: ${{ secrets.CLOUDFLARE_ZONE }}
+
+          # Using API Token
+          api_token: ${{ secrets.CLOUDFLARE_TOKEN }}
