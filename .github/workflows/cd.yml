@@ -23,6 +23,7 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: "/sass/"
+          ARGS: "-avzr --delete"
       - name: Clear Cloudflare cache
         uses: Cyb3r-Jak3/action-cloudflare-cache@v1.1.0
         with:
