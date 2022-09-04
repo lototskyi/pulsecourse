@@ -50,5 +50,44 @@ $(document).ready(function(){
         if (target.classList.contains('overlay')) {
             $('.overlay, .modal').fadeOut();
         }
-    })
+    });
+    $(document).on('keyup', (e) => {
+        if (e.key == 'Escape' && $('.overlay').is(':visible')) {
+            $('.overlay, .modal').fadeOut();
+        }
+    });
+
+    function validateForm(form) {
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                },
+    
+            },
+            messages: {
+                name: {
+                    required: "Please fill in your name",
+                    minlength: jQuery.validator.format("At least {0} characters required!")
+                },
+                phone: "Please fill in your phone number",
+                email: {
+                  required: "We need your email address to contact you",
+                  email: "Your email address must be in the format of name@domain.com"
+                }
+              }
+        });
+    }
+
+    validateForm('#consultation-form');
+    validateForm('#order form');
+    validateForm('#consultation form');
+    
+    $('input[name=phone]').mask("+8 (999) 999-9999");
 });
