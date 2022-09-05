@@ -24,6 +24,14 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: "/sass/"
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22
+          script: cd ${{ secrets.REMOTE_TARGET }} && composer install -n
       - name: Clear Cloudflare cache
         uses: Cyb3r-Jak3/action-cloudflare-cache@v1.1.0
         with:
