@@ -23,7 +23,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
-          EXCLUDE: "/sass/"
+          EXCLUDE: "/sass/, /node_modules/, /mailer/.env"
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
