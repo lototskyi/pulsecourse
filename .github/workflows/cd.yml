@@ -17,7 +17,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v2
       - run: npm install --save-dev
-      - run: gulp
+      - run: gulp styles html scripts fonts icons images mailer composer-files
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
         env:
