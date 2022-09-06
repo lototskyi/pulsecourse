@@ -14,6 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+      - run: cd backend_app
+      - run: npm init -Y
+      - run: npm install --save-dev
+      - run: gulp
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
         env:
