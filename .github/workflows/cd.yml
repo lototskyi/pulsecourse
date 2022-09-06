@@ -18,6 +18,7 @@ jobs:
         uses: actions/setup-node@v2
       - run: npm install --save-dev
       - run: gulp styles html scripts fonts icons images mailer composer-files
+      - uses: actions/checkout@v2
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
         env:
