@@ -18,13 +18,12 @@ jobs:
         uses: actions/setup-node@v2
       - run: npm install --save-dev
       - run: gulp styles html scripts fonts icons images mailer composer-files
-      - uses: actions/checkout@v2
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-avz --delete"
-          SOURCE: "dest/"
+          SOURCE: "dist/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
