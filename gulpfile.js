@@ -6,6 +6,9 @@ const autoprefixer = require('gulp-autoprefixer');
 const rename = require("gulp-rename");
 const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
+const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
+const minify = require("gulp-minify");
 
 gulp.task('server', function() {
 
@@ -20,10 +23,12 @@ gulp.task('server', function() {
 
 gulp.task('styles', function() {
     return gulp.src("src/sass/**/*.+(scss|sass)")
+        .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(rename({suffix: '.min', prefix: ''}))
         .pipe(autoprefixer())
         .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest("dist/css"))
         .pipe(browserSync.stream());
 });
@@ -31,6 +36,7 @@ gulp.task('styles', function() {
 gulp.task('watch', function() {
     gulp.watch("src/sass/**/*.+(scss|sass|css)", gulp.parallel('styles'));
     gulp.watch("src/*.html").on('change', gulp.parallel('html'));
+    gulp.watch("src/js/script.js").on('change', gulp.parallel('scripts'));
 });
 
 gulp.task('html', function() {
@@ -39,9 +45,24 @@ gulp.task('html', function() {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('scripts', function() {
-    return gulp.src("src/js/**/*.js")
+gulp.task('libsjs', function() {
+    return gulp.src(["src/js/**/*.js", "!src/js/script.js"])
         .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('scripts', function() {
+    return gulp.src("src/js/script.js")
+        .pipe(sourcemaps.init())
+        .pipe(babel())
+        .pipe(minify({
+            noSource: true,
+            ext: {
+                min: '.min.js'
+            }
+        }))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('dist/js'))
+        .pipe(browserSync.stream());
 });
 gulp.task('fonts', function() {
     return gulp.src("src/fonts/**/*.+(eot|ttf|woff|woff2)")
@@ -66,4 +87,4 @@ gulp.task('composer-files', function() {
 });
 
 
-gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'html', 'scripts', 'fonts', 'icons', 'images', 'mailer', 'composer-files'));
+gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'html', 'scripts', 'libsjs', 'fonts', 'icons', 'images', 'mailer', 'composer-files'));
