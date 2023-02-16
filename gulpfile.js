@@ -9,7 +9,6 @@ const htmlmin = require('gulp-htmlmin');
 const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
 const minify = require("gulp-minify");
-const removeSourcemaps = require('gulp-remove-sourcemaps');
 
 gulp.task('server', function() {
 
@@ -87,17 +86,25 @@ gulp.task('composer-files', function() {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('remove-sourcemaps-scripts', function() {
-    return gulp.src("dist/js/script.min.js")
-        .pipe(removeSourcemaps())
-        .pipe(gulp.dest('dist/js'))
-
+gulp.task('styles-production', function() {
+    return gulp.src("src/sass/**/*.+(scss|sass)")
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(rename({suffix: '.min', prefix: ''}))
+        .pipe(autoprefixer())
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest("dist/css"));
 });
-gulp.task('remove-sourcemaps-css', function() {
-    return gulp.src("dist/css/style.min.css")
-        .pipe(removeSourcemaps())
-        .pipe(gulp.dest('dist/css'))
 
+gulp.task('scripts-production', function() {
+    return gulp.src("src/js/script.js")
+        .pipe(babel())
+        .pipe(minify({
+            noSource: true,
+            ext: {
+                min: '.min.js'
+            }
+        }))
+        .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'html', 'scripts', 'libsjs', 'fonts', 'icons', 'images', 'mailer', 'composer-files'));
